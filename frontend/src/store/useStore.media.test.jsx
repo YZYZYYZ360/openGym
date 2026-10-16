@@ -125,13 +125,6 @@ describe('owed photos and videos', () => {
     expect(c1._ts).toBeGreaterThan(5)
     expect(c2._ts).toBe(5)
   })
-
-  it('resetting the demo takes its photos and videos with it', async () => {
-    await media.put(A, new Blob(['abc']), { mime: 'image/webp', pending: true })
-    await useStore.getState().resetDemo()
-    await tick()
-    expect(await media.list()).toEqual([])
-  })
 })
 
 // A workout's own photos and videos (workouts[].media) ride the very same rules: owed while the

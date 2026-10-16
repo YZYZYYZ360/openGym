@@ -3,7 +3,7 @@ import { api, setRemoteAuth } from '../lib/api.js'
 import { localTZ } from '../lib/format.js'
 import { t } from '../lib/i18n.js'
 import { registerCustom, healCustomEx } from '../lib/exercises.js'
-import { DEMO, DEMO_SEEDED } from '../lib/demo.js'
+import { DEMO } from '../lib/demo.js'
 import { rememberDefaultLang } from '../lib/default-lang.js'
 import { guestAllowed } from '../lib/guest.js'
 import { MOBILE, initReminderSync, nativeLoad, nativeSave, onAppActive, readJsonFile, syncReminder, writeAutoBackup, writeJsonFile } from '../lib/mobile.js'
@@ -1823,16 +1823,6 @@ export const useStore = create((set, get) => {
       return left.owed ? owedResult(left, { stashed: true }) : { owed: false }
     },
 
-    // Demo build only: drop the seeded example profile back in (Settings → "Reset demo data").
-    // Dynamic import so the generator never ships in a self-hosted bundle.
-    async resetDemo() {
-      const { buildDemoState } = await import('../lib/demoSeed.js')
-      markOwed(false)
-      persist(Object.assign(clone(DEF), buildDemoState()), false)
-      // The demo's photos and videos were only ever in this browser, and the reset takes them too.
-      await mediaStore.clearAll().catch(() => {})
-    },
-
     // Boot: ask the server who we are, then pull.
     async boot() {
       // Mobile build: no backend by default — restore from the file mirror (the durable copy;
@@ -1910,12 +1900,10 @@ export const useStore = create((set, get) => {
         finishBoot({ needsMobileOnboarding: !remote && !hasData(get().S) })
         return
       }
-      // Demo build (GitHub Pages): no backend at all — seed once, stay in guest mode.
+      // Personal local build (VITE_DEMO=1, e.g. Cloudflare Pages): no backend at all. Nothing is
+      // seeded — the store already holds what loadState() read from localStorage (an existing
+      // profile is kept as it is) or a blank profile on a first visit. Stay in guest mode.
       if (DEMO) {
-        if (!localStorage.getItem(DEMO_SEEDED)) {
-          localStorage.setItem(DEMO_SEEDED, '1')
-          await get().resetDemo()
-        }
         get().setGuest(true)
         finishBoot()
         return

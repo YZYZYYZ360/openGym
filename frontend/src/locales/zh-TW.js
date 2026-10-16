@@ -2235,4 +2235,10 @@ export default {
   'Your sports watch, calling you back.': '你的運動手錶在叫你回來。',
   'Coach wants you back on the bar.': '教練等你回到槓鈴前。',
   'Gentle, for headphones or a quiet room.': '輕柔，適合耳機或安靜的房間。',
+  // --- personal local mode (VITE_DEMO=1 personal PWA); English fallback outside zh / zh-TW ---
+  'Personal local mode': '個人本機模式',
+  'No account, no cloud. Your data is stored only in this browser on this device. Back it up anytime in Data & backup.': '無需帳號，也沒有雲端。你的資料只儲存在這台裝置的此瀏覽器中。隨時可在「資料與備份」中備份。',
+  'Stored only in this browser.': '僅儲存在此瀏覽器中。',
+  'Personal training log. Everything stays in this browser.': '個人訓練日誌。所有內容都留在此瀏覽器中。',
+  'This app runs entirely in your browser, starting empty. Nothing is sent anywhere. Passkey sign-in and sync across your devices come with the openGym server, which you get by self-hosting it.': '此應用程式完全在你的瀏覽器中執行，起始為空。不會傳送任何資料到任何地方。通行密鑰登入與跨裝置同步需搭配 openGym 伺服器，自行架設即可擁有。',
 }

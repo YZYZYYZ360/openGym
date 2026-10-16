@@ -95,7 +95,7 @@ export default function Settings({ page = null, find = null, via = null }) {
   const passkeys = usePasskeys(!!user && !MOBILE && !DEMO && (page === 'account'))
   const [credsV, setCredsV] = useState(0)
   const credsChanged = () => { passkeys.load(); setCredsV(v => v + 1) }
-  const { update, importConflict, importBackup, setUnit, resetEverything: resetAll, setUser, pullState, pushState, resetDemo } = useStore()
+  const { update, importConflict, importBackup, setUnit, resetEverything: resetAll, setUser, pullState, pushState } = useStore()
   const toast = useUI(s => s.toast)
   const fileRef = useRef(null)
   const importRef = useRef(null)
@@ -850,16 +850,14 @@ export default function Settings({ page = null, find = null, via = null }) {
       </ServerSyncSection>}
 
       {/* account (demo and mobile builds have nothing to sign in to) */}
-      {!(MOBILE && user) && <Section title={MOBILE ? t('Your data') : DEMO ? t('Demo') : t('Account')}>
+      {!(MOBILE && user) && <Section title={MOBILE ? t('Your data') : DEMO ? t('Your data') : t('Account')}>
         {MOBILE ? <>
           <Row icon="lock" iconTint="var(--acc)" title={t('All data stays on this phone')} subtitle={t('No account, no cloud. Back it up anytime in Data & backup.')} />
           <Row icon="cloud" iconTint="var(--indigo)" title={t('Connect to my server')} subtitle={t('Sync this device to your own self-hosted openGym instead.')} accessory="chevron"
             onClick={connectServer} />
           <KeptChangesRows />
         </> : DEMO ? <>
-          <Row icon="info" iconTint="var(--acc)" title={t('You’re in the demo')} subtitle={t('Example data, stored only in this browser. Go wild and change anything you like.')} />
-          <Row icon="reset" iconTint="var(--blue)" title={t('Reset demo data')} accessory="chevron"
-            onClick={() => confirmSheet({ title: t('Reset demo data?'), message: t('Puts the example plan, workouts and weigh-ins back the way they started.'), confirmText: t('Reset'), onConfirm: () => { resetDemo(); nav('/home'); toast(t('Demo data reset')) } })} />
+          <Row icon="lock" iconTint="var(--acc)" title={t('Personal local mode')} subtitle={t('No account, no cloud. Your data is stored only in this browser on this device. Back it up anytime in Data & backup.')} />
           <Row icon="rocket" iconTint="var(--indigo)" title={t('Self-host openGym')} subtitle={t('Passkey sign-in, sync across your devices, your own data.')} accessory="chevron"
             onClick={() => window.open(REPO, '_blank', 'noopener')} />
         </> : user ? <>
@@ -927,7 +925,7 @@ function SettingsRoot({ ctx, preview, open, user, sync, home, go }) {
   const set = v => { lastQuery = { q: v, key }; setQ(v) }
   const hits = q.trim() ? searchSettings(q, ctx) : null
   // The account card: who this is, and the one line that matters about it.
-  const acct = DEMO ? { title: t('Demo'), sub: t('Example data, only in this browser.') }
+  const acct = DEMO ? { title: t('Your data'), sub: t('Stored only in this browser.') }
     : user ? {
       title: user.name || t('Account'),
       sub: sync && sync.status && sync.status !== 'ok' ? t('Sync needs a look') : MOBILE ? t('Synced with your server') : t('Account, devices and sync'),

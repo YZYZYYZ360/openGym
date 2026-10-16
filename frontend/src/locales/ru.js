@@ -2246,4 +2246,10 @@ export default {
   'Your sports watch, calling you back.': 'Ваши спортивные часы зовут вас обратно.',
   'Coach wants you back on the bar.': 'Тренер ждёт вас обратно у штанги.',
   'Gentle, for headphones or a quiet room.': 'Тихий, для наушников или спокойного зала.',
+  // --- personal local mode (VITE_DEMO=1 personal PWA); English fallback outside zh / zh-TW ---
+  'Personal local mode': 'Personal local mode',
+  'No account, no cloud. Your data is stored only in this browser on this device. Back it up anytime in Data & backup.': 'No account, no cloud. Your data is stored only in this browser on this device. Back it up anytime in Data & backup.',
+  'Stored only in this browser.': 'Stored only in this browser.',
+  'Personal training log. Everything stays in this browser.': 'Personal training log. Everything stays in this browser.',
+  'This app runs entirely in your browser, starting empty. Nothing is sent anywhere. Passkey sign-in and sync across your devices come with the openGym server, which you get by self-hosting it.': 'This app runs entirely in your browser, starting empty. Nothing is sent anywhere. Passkey sign-in and sync across your devices come with the openGym server, which you get by self-hosting it.',
 }

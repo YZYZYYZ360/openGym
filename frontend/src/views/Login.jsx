@@ -85,10 +85,10 @@ export default function Login() {
   if (DEMO) return (
     <div className="narrow" style={wrap}>
       {head}
-      <div className="muted" style={{ marginBottom: 30 }}>{t('Live demo. Everything stays in this browser.')}</div>
-      <Button variant="primary" icon="play" onClick={() => setGuest(true)}>{t('Start the demo')}</Button>
+      <div className="muted" style={{ marginBottom: 30 }}>{t('Personal training log. Everything stays in this browser.')}</div>
+      <Button variant="primary" icon="play" onClick={() => setGuest(true)}>{t('Start')}</Button>
       <div className="card small muted" style={{ textAlign: 'start', marginTop: 16 }}>
-        {t('This demo runs entirely in your browser on example data. Nothing is sent anywhere. Passkey sign-in and sync across your devices come with the openGym server, which you get by self-hosting it.')}
+        {t('This app runs entirely in your browser, starting empty. Nothing is sent anywhere. Passkey sign-in and sync across your devices come with the openGym server, which you get by self-hosting it.')}
       </div>
       <div className="dim small" style={{ marginTop: 22, lineHeight: 1.6 }}>
         <a href={REPO} target="_blank" rel="noopener">{t('Self-host it in a minute →')}</a>

@@ -2242,4 +2242,10 @@ export default {
   'Your sports watch, calling you back.': '你的运动手表在叫你回来。',
   'Coach wants you back on the bar.': '教练等你回到杠铃前。',
   'Gentle, for headphones or a quiet room.': '轻柔，适合耳机或安静的房间。',
+  // --- personal local mode (VITE_DEMO=1 personal PWA); English fallback outside zh / zh-TW ---
+  'Personal local mode': '个人本地模式',
+  'No account, no cloud. Your data is stored only in this browser on this device. Back it up anytime in Data & backup.': '无需账号，也没有云端。你的数据只保存在这台设备的此浏览器中。随时在“数据与备份”里备份。',
+  'Stored only in this browser.': '仅保存在此浏览器中。',
+  'Personal training log. Everything stays in this browser.': '个人训练日志。所有内容都留在此浏览器中。',
+  'This app runs entirely in your browser, starting empty. Nothing is sent anywhere. Passkey sign-in and sync across your devices come with the openGym server, which you get by self-hosting it.': '此应用完全在你的浏览器中运行，初始为空。不会向任何地方发送数据。通行密钥登录和跨设备同步需要 openGym 服务器，你可以自行托管。',
 }
